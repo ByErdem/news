@@ -1,19 +1,64 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+ <head>
+   <meta charset="UTF-8" />
+   <title>
+     {% block title %}
+       Welcome!
+     {% endblock %}
+   </title>
+   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+ 
+   {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+   {% block stylesheets %}
+     {{ encore_entry_link_tags('app') }}
+   {% endblock %}
+ 
+   {% block javascripts %}
+     {{ encore_entry_script_tags('app') }}
+   {% endblock %}
+ </head>
+ <body style="background-color: #171926;">
+   <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class="container-fluid">
+       <img src="data:image/png;base64,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" style="width: 220px;" data-ll-status="loaded" class="entered lazyloaded" width="253" height="28" />
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+       <div class="collapse navbar-collapse" id="navbarColor02">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item me-1 ms-5">
+             <a class="btn btn-info btnGetNews" aria-current="page" href="#">Спецпроекты</a>
+           </li>
+         </ul>
+       </div>
+     </div>
+   </header>
+ 
+   <div id="alertPlaceholder"></div>
+ 
+   <script type="text/javascript">
+     var alertPlaceholder = document.getElementById('alertPlaceholder')
+    
+     function alert(message, type) {
+       var wrapper = document.createElement('div')
+       wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+       alertPlaceholder.append(wrapper)
+     }
+    
+     $(document).on('click', '.btnGetNews', function (e) {
+       $.get('/Home/GetContents', function (data) {
+         console.log(data);
+         //alert(data, 'success')
+       })
+     })
+   </script>
+ 
+   {% block body %}
+ 
+   {% endblock %}
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ </body>
 </html>
+ 
+ 
+

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}
+ Hello HomeController!
+{% endblock %}
+ 
+{% block body %}
+ <!-- h1 class="btn btn-success">Hello {{ controller_name }}! ✅</h1 -->
+ 
+ <table class="table table-light table-hover">
+   <thead>
+     <tr>
+       <th scope="col">#</th>
+       <th scope="col">Picture</th>
+       <th scope="col">Title</th>
+       <th scope="col">Description</th>
+       <th scope="col">Date Add</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for n in news %}
+       <tr>
+         <th scope="row">{{n.id}}</th>
+         <td><img src="{{n.picture}}" width="100" height="100"/></td>
+         <td>{{n.title}}</td>
+         <td>{{n.shortDescription}}</td>
+         <td>{{n.dateAdded.format('d/m/Y')}}</td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+{% endblock %}
+ 
+
