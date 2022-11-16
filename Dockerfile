@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.1.10-fpm
 RUN apt-get update
 RUN apt-get install -y autoconf pkg-config libssl-dev libzip-dev git gcc make libc-dev vim unzip
 
@@ -12,7 +12,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash \
-    && mv /root/.symfony/bin/symfony /usr/local/bin/
+    && mv /root/.symfony5/bin/symfony /usr/local/bin/
 
 WORKDIR /home/app
 
