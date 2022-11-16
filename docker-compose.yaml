@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: app
+    volumes:
+      -  ./:/home/app
+    ports:
+      - "8022:8082"
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    volumes:
+      -  db_fm_data:/var/lib/mysql
+    restart: always
+    ports:
+      -  "3306:3306"
+    environment:
+      MYSQL_DATABASE: news
+
+
+
+volumes:
+  db_fm_data: {}
+
+networks:
+  net:
