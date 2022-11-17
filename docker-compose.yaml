@@ -11,17 +11,35 @@ services:
     container_name: mysql
     image: mysql:8.0
     volumes:
-      -  db_fm_data:/var/lib/mysql
+      -  db_fm_data:/var/run/mysqld
     restart: always
     ports:
       -  "3306:3306"
     environment:
       MYSQL_DATABASE: news
+      MYSQL_ROOT_PASSWORD: 12345
+      #MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links: 
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
 
-
+networks:
+  app_network:
 volumes:
   db_fm_data: {}
 
-networks:
-  net:
+# volumes:
+#   db_fm_data: {}
+
+# networks:
+#   net:

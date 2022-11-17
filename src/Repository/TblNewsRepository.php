@@ -39,6 +39,14 @@ class TblNewsRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAll(): array
+    {
+        return $this->createQueryBuilder('t')
+           ->setMaxResults(10)
+           ->getQuery()
+           ->getResult();
+    }
+
 //    /**
 //     * @return TblNews[] Returns an array of TblNews objects
 //     */
