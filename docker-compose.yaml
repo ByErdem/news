@@ -4,17 +4,17 @@ services:
     build: .
     container_name: app
     volumes:
-      -  ./:/home/app
+      - ./:/home/app
     ports:
       - "8022:8082"
   mysql:
     container_name: mysql
     image: mysql:8.0
     volumes:
-      -  db_fm_data:/var/run/mysqld
+      - db_fm_data:/var/run/mysqld
     restart: always
     ports:
-      -  "3306:3306"
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: news
       MYSQL_ROOT_PASSWORD: 12345
@@ -33,11 +33,20 @@ services:
     ports:
       - 8081:80
 
+  _rabbitmq:
+    container_name: c_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq./var/lib/rabbitmq
+
 networks:
   app_network:
 volumes:
   db_fm_data: {}
-
+  rabbitmq:
 # volumes:
 #   db_fm_data: {}
 
