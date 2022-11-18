@@ -47,6 +47,17 @@ class TblNewsRepository extends ServiceEntityRepository
            ->getResult();
     }
 
+    /**
+    * @return int
+    */
+    public function getCount()
+    {
+        return $this->createQueryBuilder('u')
+        ->select('count(u.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return TblNews[] Returns an array of TblNews objects
 //     */
